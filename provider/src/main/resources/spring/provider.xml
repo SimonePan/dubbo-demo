@@ -12,15 +12,18 @@
 
     <!-- 由dubbo自动分配地址，不通过注册中心，直连 -->
     <!-- <dubbo:registry address="N/A"/> -->
+    <!-- check：默认true，启动时检查依赖的服务是否可用，不可用时会抛异常，阻止Spring初始化。测试时可关闭-->
     <dubbo:registry address="zookeeper://localhost:2181" check="false"/>
 
     <!-- 用dubbo协议在20880端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="20880"/>
 
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service interface="com.example.provider.DemoService" ref="demoService"/>
+    <!-- cluster:集群模式，failover失败自动切换，当出现失败时，重试其他服务器。通常用户读操作，但重试会带来更长的延时。retries设置重试次数（不含第一次） -->
+    <dubbo:service interface="com.example.provider.service.DemoService" ref="demoService" cluster="failover"
+                   retries="2"/>
 
-    <!-- 和本地bean一样实现服务 -->
-    <bean id="demoService" class="com.example.provider.DemoServiceImpl"/>
+    <!-- 和本地bean一样实现服务,通过@Service注解实现也是一样 -->
+    <bean id="demoService" class="com.example.provider.service.impl.DemoServiceImpl"/>
 
 </beans>

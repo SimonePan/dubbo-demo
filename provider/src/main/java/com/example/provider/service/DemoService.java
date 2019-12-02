@@ -1,4 +1,4 @@
-package com.example.provider;
+package com.example.provider.service;
 
 /**
  * @description: demo

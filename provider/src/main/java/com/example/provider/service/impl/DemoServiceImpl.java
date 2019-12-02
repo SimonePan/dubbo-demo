@@ -1,5 +1,6 @@
-package com.example.provider;
+package com.example.provider.service.impl;
 
+import com.example.provider.service.DemoService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,6 +12,6 @@ import org.springframework.stereotype.Service;
 public class DemoServiceImpl implements DemoService {
     @Override
     public String sayHello(String name) {
-        return "Hello" + name;
+        return "Hello " + name;
     }
 }

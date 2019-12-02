@@ -4,10 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
-import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
-@ImportResource({"classpath:spring/provider.xml"})
+/**
+ * @author Grace
+ */
+// 使用xml配置时放开
+//@ImportResource({"classpath:spring/provider.xml"})
 @SpringBootApplication
 public class ProviderApplication {
     private static CountDownLatch countDownLatch = new CountDownLatch(1);

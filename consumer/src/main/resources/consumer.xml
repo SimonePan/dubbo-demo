@@ -12,5 +12,7 @@
     <dubbo:registry address="zookeeper://localhost:2181" check="false"/>
 
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
-    <dubbo:reference id="demoService" interface="com.example.provider.DemoService" />
+    <!-- check：默认true，启动时检查依赖的服务是否可用，不可用时会抛异常，阻止Spring初始化。测试时可关闭-->
+    <dubbo:reference id="demoService" interface="com.example.provider.service.DemoService" check="false" />
+
 </beans>
